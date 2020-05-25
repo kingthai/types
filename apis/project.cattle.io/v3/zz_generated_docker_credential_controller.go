@@ -2,6 +2,7 @@ package v3
 
 import (
 	"context"
+	"github.com/sirupsen/logrus"
 	"time"
 
 	"github.com/rancher/norman/controller"
@@ -272,6 +273,7 @@ func (s *dockerCredentialClient) DeleteNamespaced(namespace, name string, option
 
 func (s *dockerCredentialClient) List(opts metav1.ListOptions) (*DockerCredentialList, error) {
 	obj, err := s.objectClient.List(opts)
+	logrus.Infof("cxx docker credential list: %+v", obj)
 	return obj.(*DockerCredentialList), err
 }
 

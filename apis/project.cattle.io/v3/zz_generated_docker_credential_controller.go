@@ -272,6 +272,7 @@ func (s *dockerCredentialClient) DeleteNamespaced(namespace, name string, option
 }
 
 func (s *dockerCredentialClient) List(opts metav1.ListOptions) (*DockerCredentialList, error) {
+	logrus.Infof("cxx docker credential opts: %+v", opts)
 	obj, err := s.objectClient.List(opts)
 	logrus.Infof("cxx docker credential list: %+v", obj)
 	return obj.(*DockerCredentialList), err
